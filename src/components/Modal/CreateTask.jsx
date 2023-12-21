@@ -1,9 +1,8 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 
-let i = document.getElementById("confirmation-modal");
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { postATask } from "../../api/task";
+
 
 const CreateTask = () => {
   const {
@@ -13,21 +12,27 @@ const CreateTask = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     // console.log(data);
     const title = data.title;
     const description = data.description;
     const deadline = data.deadline;
     const priority = data.priority;
-    console.log(title, description, deadline, priority);
-    //TODO : set status
+    const status = "todo";
+    console.log(title, description, deadline, priority, status);
+    const newTask = {
+      title, description, deadline, priority, status
+    }
+
+    const taskPost = await postATask(newTask);
+
+    console.log(taskPost);
 
     Swal.fire({
       title: "Success!",
       text: "Successfully Task added!",
       icon: "success",
     });
-    // i.setAttribute('disabled', true);
     reset();
   };
 
@@ -56,7 +61,7 @@ const CreateTask = () => {
                 placeholder="Type here"
                 className="w-full px-3 py-2 border-4 rounded-md border-black focus:outline-gray-400 bg text-gray-400"
               />
-              {errors.name?.type === "required" && (
+              {errors.title?.type === "required" && (
                 <p role="alert" className="text-red-500">
                   Title is required
                 </p>
@@ -72,7 +77,7 @@ const CreateTask = () => {
                 placeholder="Type here"
                 className="w-full px-3 py-2 border-4 rounded-md border-black focus:outline-gray-400 bg text-gray-400"
               />
-              {errors.name?.type === "required" && (
+              {errors.description?.type === "required" && (
                 <p role="alert" className="text-red-500">
                   Description is required
                 </p>
@@ -88,33 +93,59 @@ const CreateTask = () => {
                 placeholder="Type here"
                 className="w-full px-3 py-2 border-4 rounded-md border-black focus:outline-gray-400 bg text-gray-400"
               />
-              {errors.name?.type === "required" && (
+              {errors.deadline?.type === "required" && (
                 <p role="alert" className="text-red-500">
                   Deadline is required
                 </p>
               )}
             </div>
 
-            <div className="form-control mt-6 flex justify-between">
-              {/* <input   htmlFor="confirmation-modal"
-                className="btn btn-primary text-white bg-textBlue hover:bg-gray-400 hover:text-black hover:border-transparent"
-                type="submit"
-                value="Sign up"
-              /> */}
-              <label
-                htmlFor="confirmation-modal"
-                className="btn w-full h-12 mt-3 btn-sm text-textBlue hover:bg-transparent border-2 bg-transparent  border-textBlue rounded-md"
-              >
-                add
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Priority</span>
               </label>
+              {/* <input
+                type="text"
+                {...register("priority", { required: true })}
+                placeholder="Type here"
+                className="w-full px-3 py-2 border-4 rounded-md border-black focus:outline-gray-400 bg text-gray-400"
+              /> */}
+              <select
+                {...register("priority", { required: true })}
+                defaultValue="Low"
+                className="select select-bordered w-full px-3 py-2 border-4 rounded-md border-black focus:outline-gray-400 bg text-gray-400"
+              >
+                <option value="Low">Low</option>
+                <option value="Moderate">Moderate</option>
+                <option value="High">High</option>
+              </select>
+
+              {errors.priority?.type === "required" && (
+                <p role="alert" className="text-red-500">
+                  Priority is required
+                </p>
+              )}
+            </div>
+
+            <div className="form-control mt-6 flex justify-between">
+              <input
+                htmlFor="confirmation-modal"
+                className="btn  text-white bg-textBlue hover:bg-gray-400 hover:text-black hover:border-transparent"
+                type="submit"
+                value="Add"
+              />
             </div>
           </form>
-
+          {/* <label
+            htmlFor="confirmation-modal"
+            className="btn w-full h-12 mt-3 btn-sm text-textBlue hover:bg-transparent border-2 bg-transparent  border-textBlue rounded-md"
+          >
+            Cancel
+          </label> */}
           <div className="modal-action">
-            <button className="btn btn-sm text-white  btn-error">Add</button>
             <label
               htmlFor="confirmation-modal"
-              className="btn  btn-sm text-white btn-primary"
+              className="btn mt-3 btn-sm text-textBlue hover:bg-transparent border-2 bg-transparent  border-textBlue rounded-md"
             >
               Close
             </label>
