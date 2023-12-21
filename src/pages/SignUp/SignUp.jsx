@@ -47,10 +47,7 @@ const SignUp = () => {
       });
       reset();
       navigate("/");
-      // sign up korar por name, profile ase na seta thekate ....
-      //       logOut().then(() => {
-      //         navigate("/login");
-      // }
+      
     } catch (error) {
       console.log(error);
       Swal.fire({

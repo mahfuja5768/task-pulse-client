@@ -27,9 +27,9 @@ export default {
       colors: {
         // textBlue: "#8cc3f5",
         textBlue: "#092635",
-        textLight: "#E74646",
+        primary: "#EBF3E8",
         textDark: "#8892b0",
-        hoverColor: "#E74646",
+        hoverColor: "#B2C8BA",
       },
     },
   },

@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import {  useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaX } from "react-icons/fa6";
 import logo from "../assets/logo.png";
 
 export const Navbar = () => {
-
   const [showMenu, setShowMenu] = useState(false);
 
   return (
@@ -16,7 +15,9 @@ export const Navbar = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.1 }}
         >
-          <Link to={'/'}><img className="w-24" src={logo} alt="logo" /></Link>
+          <Link to={"/"}>
+            <img className="mdl:w-24 md:w-20 w-12" src={logo} alt="logo" />
+          </Link>
         </motion.div>
         <div className="hidden mdl:inline-flex items-center gap-7">
           <ul className="flex text-[15px] gap-7 ">
@@ -34,7 +35,6 @@ export const Navbar = () => {
             </Link>
             <Link
               to="/about"
-              
               className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
             >
               <motion.li
@@ -47,7 +47,6 @@ export const Navbar = () => {
             </Link>
             <Link
               to="/signUp"
-              
               className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
             >
               <motion.li
@@ -58,6 +57,10 @@ export const Navbar = () => {
                 Register
               </motion.li>
             </Link>
+
+            <Link to='/login'><button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
+              Login
+            </button></Link>
           </ul>
         </div>
         {/* icon */}
@@ -77,16 +80,15 @@ export const Navbar = () => {
               transition={{ duration: 0.1 }}
               className="w-[80%] h-full bg-[#112240]  overflow-y-scroll scrollbarHide flex flex-col items-center px-4 py-10 relative"
             >
-              <FaX 
+              <FaX
                 onClick={() => setShowMenu(false)}
-                className="text-3xl text-textBlue  hover:text-red-500 absolute cursor-pointer right-4 top-4"
-              ></FaX >
+                className="text-3xl text-white  hover:text-red-700 absolute cursor-pointer right-4 top-4"
+              ></FaX>
               <div className="flex flex-col items-center gap-7">
                 <ul className="flex flex-col text-base gap-7">
                   <Link
-                    href="#home"
-                    
-                    className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
+                    to="/"
+                    className="flex items-center gap-1 font-semibold text-white hover:text-textDark cursor-pointer duration-300 nav-link"
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -97,9 +99,8 @@ export const Navbar = () => {
                     </motion.li>
                   </Link>
                   <Link
-                    href="#about"
-                    
-                    className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
+                    to="/about"
+                    className="flex items-center gap-1 font-semibold text-white hover:text-textDark cursor-pointer duration-300 nav-link"
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -110,42 +111,15 @@ export const Navbar = () => {
                     </motion.li>
                   </Link>
                   <Link
-                    href="#project"
-                    
-                    className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
+                    href="/signUp"
+                    className="flex items-center gap-1 font-semibold text-white hover:text-textDark cursor-pointer duration-300 nav-link"
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.2, delay: 0.1, ease: "easeIn" }}
                     >
-                      Project
-                    </motion.li>
-                  </Link>
-                  <Link
-                    
-                    href="#education"
-                    className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.2, delay: 0.1, ease: "easeIn" }}
-                    >
-                      Education
-                    </motion.li>
-                  </Link>
-                  <Link
-                    
-                    href="#contact"
-                    className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
-                  >
-                    <motion.li
-                      initial={{ x: 20, opacity: 0 }}
-                      animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.2, delay: 0.2, ease: "easeIn" }}
-                    >
-                      Contact
+                      Register
                     </motion.li>
                   </Link>
                 </ul>
