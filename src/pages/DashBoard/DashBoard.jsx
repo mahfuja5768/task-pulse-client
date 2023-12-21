@@ -8,6 +8,7 @@ import Loading from "../../components/Shared/Loading";
 
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import UserInfo from "../../components/UserInfo";
 
 
 const DashBoard = () => {
@@ -17,6 +18,7 @@ const DashBoard = () => {
   if(loading){
       return <p><Loading/></p>
   }
+
   const {
     data: tasks = [],
     refetch,
@@ -38,12 +40,15 @@ const DashBoard = () => {
 //   }
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="flex  px-6 flex-col items-center pt-3 gap-16">
-        <CreateTask refetch={refetch} />
-        <TaskList tasks={tasks} refetch={refetch} />
-      </div>
-    </DndProvider>
+    <div>
+      <UserInfo></UserInfo>
+      <DndProvider backend={HTML5Backend}>
+        <div className="flex  px-6 flex-col items-center pt-3 gap-16">
+          <CreateTask refetch={refetch} />
+          <TaskList tasks={tasks} refetch={refetch} />
+        </div>
+      </DndProvider>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const Task = ({ task, refetch }) => {
   const handleDetail = async (id) => {
     const getTask = await taskDetails(id);
     console.log(getTask);
-    setDetail(getTask);
+    setDetail(getTask[0]);
   };
 
   const [{ isDragging }, drag] = useDrag(() => ({
@@ -55,17 +55,17 @@ const Task = ({ task, refetch }) => {
     <>
       <div
         ref={drag}
-        className={`relative p-4 mt-8 shadow-md bg-white rounded-md cursor-grab flex flex-col justify-between items-center ${
+        className={`relative p-4 mt-8 shadow-md bg-white rounded-md cursor-grab flex flex-col justify-between ${
           isDragging ? "opacity-25" : "opacity-100"
         }`}
       >
-        <div className="flex flex-col">
-          <p className="md:text-2xl text-xl">Title: {task?.title}</p>{" "}
+        <div className="w-full">
+          <p className="md:text-xl text-xl w-full">Title: {task?.title}</p>{" "}
         </div>
-        <div className="flex  text-lg justify-center items-center my-2 gap-4">
+        <div className="flex   text-lg justify-evenly items-center my-3 gap-4">
           <Link onClick={() => handleDetail(task?._id)}>
             <button
-              className=""
+              className="flex   justify-center items-center "
               onClick={() => document.getElementById("my_modal_3").showModal()}
             >
               <FaEye />
@@ -73,12 +73,15 @@ const Task = ({ task, refetch }) => {
           </Link>
 
           <Link to={`/updateTask/${task._id}`}>
-            <button className="">
+            <button className="flex   justify-center items-center ">
               <MdEdit />
             </button>
           </Link>
 
-          <button onClick={() => handleRemove(task._id)} className="">
+          <button
+            onClick={() => handleRemove(task._id)}
+            className="flex   justify-center items-center "
+          >
             <MdDelete />
           </button>
         </div>
@@ -87,13 +90,23 @@ const Task = ({ task, refetch }) => {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <form method="dialog">
-            {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click on ✕ button to close</p>
+          <h3 className="font-bold text-lg text-black">Title: {title}</h3>
+          <p className="py-4">Description: {description}</p>
+          <p className="py-4">
+            Deadline: {new Date(deadline).toLocaleString()}
+          </p>
+          <p className="py-4">
+            Task Created in: {new Date(taskAddedTime).toLocaleString()}
+          </p>
+          <p className="py-4">Task update: In {status} list</p>
+          <p className="py-4">
+            Priority:
+            {priority}
+          </p>
         </div>
       </dialog>
     </>
