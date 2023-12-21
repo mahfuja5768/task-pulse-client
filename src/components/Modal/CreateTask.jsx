@@ -1,10 +1,11 @@
-
+/* eslint-disable react/prop-types */
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { postATask } from "../../api/task";
+import useAuth from "../../hooks/useAuth";
 
-
-const CreateTask = () => {
+const CreateTask = ({ refetch }) => {
+  const { user } = useAuth();
   const {
     register,
     handleSubmit,
@@ -19,10 +20,18 @@ const CreateTask = () => {
     const deadline = data.deadline;
     const priority = data.priority;
     const status = "todo";
-    console.log(title, description, deadline, priority, status);
+    const email = user?.email;
+    const taskAddedTime = new Date();
+    console.log(title, email, description, deadline, priority, status);
     const newTask = {
-      title, description, deadline, priority, status
-    }
+      title,
+      description,
+      deadline,
+      priority,
+      status,
+      taskAddedTime,
+      email,
+    };
 
     const taskPost = await postATask(newTask);
 
@@ -33,6 +42,7 @@ const CreateTask = () => {
       text: "Successfully Task added!",
       icon: "success",
     });
+    refetch();
     reset();
   };
 
@@ -88,7 +98,7 @@ const CreateTask = () => {
                 <span className="label-text">Deadline</span>
               </label>
               <input
-                type="text"
+                type="datetime-local"
                 {...register("deadline", { required: true })}
                 placeholder="Type here"
                 className="w-full px-3 py-2 border-4 rounded-md border-black focus:outline-gray-400 bg text-gray-400"

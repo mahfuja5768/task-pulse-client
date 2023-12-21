@@ -3,9 +3,25 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaX } from "react-icons/fa6";
 import logo from "../assets/logo.png";
+import useAuth from "../hooks/useAuth";
+import Swal from "sweetalert2";
 
 export const Navbar = () => {
+  const {user, logOut}= useAuth()
   const [showMenu, setShowMenu] = useState(false);
+
+  const handleLogout =()=>{
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "Success!",
+          text: "Successfully log out!",
+          icon: "success",
+          confirmButtonText: "Done",
+        });
+      })
+      .catch((err) => console.log(err));
+  }
 
   return (
     <div className="w-full shadow-2xl h-20 lg:h-[12vh] sticky top-0 z-50 px-4 mb-12">
@@ -57,10 +73,29 @@ export const Navbar = () => {
                 Register
               </motion.li>
             </Link>
-
-            <Link to='/login'><button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
-              Login
-            </button></Link>
+            {user ? (
+              <div className="flex  gap-3">
+                <img
+                  className="w-12 rounded-full h-12"
+                  src={user?.photoURL}
+                  alt=""
+                />
+                <Link to="/login">
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300"
+                  >
+                    Log out
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <Link to="/login">
+                <button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
+                  Login
+                </button>
+              </Link>
+            )}
           </ul>
         </div>
         {/* icon */}
@@ -122,6 +157,30 @@ export const Navbar = () => {
                       Register
                     </motion.li>
                   </Link>
+
+                  {user ? (
+                    <div className="flex flex-col gap-3">
+                      <img
+                        className="w-12 rounded-full h-12"
+                        src={user?.photoURL}
+                        alt=""
+                      />
+                      <Link to="/login">
+                        <button
+                          onClick={handleLogout}
+                          className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300"
+                        >
+                          Log out
+                        </button>
+                      </Link>
+                    </div>
+                  ) : (
+                    <Link to="/login">
+                      <button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
+                        Login
+                      </button>
+                    </Link>
+                  )}
                 </ul>
               </div>
             </motion.div>
