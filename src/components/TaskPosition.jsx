@@ -30,12 +30,12 @@ const TaskPosition = ({
 
   if (status === "onGoing") {
     text = "On Going";
-    bg = "bg-[#E11299]";
+    bg = "bg-[#9A031E]";
     tasksToMap = onGoing;
   }
   if (status === "completed") {
     text = "Completed";
-    bg = "bg-[#1F4172]";
+    bg = "bg-[#527853]";
     tasksToMap = completed;
   }
 

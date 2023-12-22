@@ -2,7 +2,7 @@ import SectionTitle from "./SectionTitle";
 
 const Benefits = () => {
   return (
-    <div className="bg-[#cd989a] py-12">
+    <div className="bg-[#f0d9d9] py-12">
       <SectionTitle
         dark={"dark"}
         title={"Who Benefits from Our Task Management Platform?"}

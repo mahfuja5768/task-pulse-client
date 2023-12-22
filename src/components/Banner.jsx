@@ -9,9 +9,9 @@ const Banner = () => {
             backgroundImage: `url('${bannerBg}')`,
           }}
         >
-          <div className="hero-overlay bg-opacity-10 "></div>
+          <div className="hero-overlay bg-opacity-0 "></div>
           <div className="hero-content text-end">
-            <div className="flex py-12 justify-end items-end flex-col">
+            <div className="flex md:py-12 py-2 justify-end items-end flex-col">
               <h1 className="mb-5 md:text-5xl text-3xl font-bold ">
                 Your Tasks, Your Way
               </h1>
@@ -22,7 +22,7 @@ const Banner = () => {
               </p>
               <Link to={'/login'}>
                 {" "}
-                <button className="btn  bg-textBlue hover:border-textBlue  border-none text-white hover:bg-transparent hover:border-4 ">
+                <button className="btn  bg-textBlue hover:border-textBlue text-white hover:border-4  border-4 border-transparent border-textBlue hover:text-textBlue hover:bg-transparent">
                   Let's Explore{" "}
                 </button>
               </Link>

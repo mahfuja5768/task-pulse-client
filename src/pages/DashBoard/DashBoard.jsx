@@ -41,7 +41,7 @@ const DashBoard = () => {
 //   }
 
   return (
-    <div className="bg-[#ecd1d1] py-12 ">
+    <div className="bg-[#f0e1e1] py-12 ">
       <SectionTitle title={'Dashboard'}></SectionTitle>
       <UserInfo></UserInfo>
       <DndProvider backend={HTML5Backend}>

@@ -5,6 +5,7 @@ import { postATask } from "../../api/task";
 import useAuth from "../../hooks/useAuth";
 
 const CreateTask = ({ refetch }) => {
+
   const { user } = useAuth();
   const {
     register,
@@ -48,18 +49,21 @@ const CreateTask = ({ refetch }) => {
 
   return (
     <div>
-      {/* The button to open modal */}
-      <label
-        htmlFor="confirmation-modal"
+      {/* You can open the modal using document.getElementById('ID').showModal() method */}
+      <button
+        onClick={() => document.getElementById("my_modal_3").showModal()}
         className="btn bg-textBlue px-4 text-white hover:bg-white hover:border-4 hover:border-textBlue hover:text-textBlue"
       >
         Add New Task
-      </label>
-
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="confirmation-modal" className="modal-toggle" />
-      <div className="modal">
+      </button>
+      <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
+          <form method="dialog">
+            {/* if there is a button in form, it will close the modal */}
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+              ✕
+            </button>
+          </form>
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -146,22 +150,8 @@ const CreateTask = ({ refetch }) => {
               />
             </div>
           </form>
-          {/* <label
-            htmlFor="confirmation-modal"
-            className="btn w-full h-12 mt-3 btn-sm text-textBlue hover:bg-transparent border-2 bg-transparent  border-textBlue rounded-md"
-          >
-            Cancel
-          </label> */}
-          <div className="modal-action">
-            <label
-              htmlFor="confirmation-modal"
-              className="btn mt-3 btn-sm text-textBlue hover:bg-transparent border-2 bg-transparent  border-textBlue rounded-md"
-            >
-              Close
-            </label>
-          </div>
         </div>
-      </div>
+      </dialog>
     </div>
   );
 };

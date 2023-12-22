@@ -59,13 +59,13 @@ const Task = ({ task, refetch }) => {
           isDragging ? "opacity-25" : "opacity-100"
         }`}
       >
-        <div className="w-full">
-          <p className="md:text-xl text-xl w-full">Title: {task?.title}</p>{" "}
+        <div className="w-full text-center">
+          <p className="md:text-xl text-xl w-full font-bold">Title: {task?.title}</p>{" "}
         </div>
-        <div className="flex   text-lg justify-evenly items-center my-3 gap-4">
+        <div className="flex  text-lg justify-evenly items-center my-3 gap-4">
           <Link onClick={() => handleDetail(task?._id)}>
             <button
-              className="flex   justify-center items-center "
+              className="flex   justify-center items-center border-2 border-textBlue p-1"
               onClick={() => document.getElementById("my_modal_3").showModal()}
             >
               <FaEye />
@@ -73,14 +73,14 @@ const Task = ({ task, refetch }) => {
           </Link>
 
           <Link to={`/updateTask/${task._id}`}>
-            <button className="flex   justify-center items-center ">
+            <button className="flex border-2 border-textBlue p-1  justify-center items-center ">
               <MdEdit />
             </button>
           </Link>
 
           <button
             onClick={() => handleRemove(task._id)}
-            className="flex   justify-center items-center "
+            className="flex  border-2 border-textBlue p-1 justify-center items-center "
           >
             <MdDelete />
           </button>

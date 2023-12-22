@@ -63,7 +63,7 @@ const SignUp = () => {
   return (
     <div className="max-w-contentContainer mx-auto py-10 mdl:py-10 flex flex-col justify-center items-center gap-4 lgl:gap-8 mdl:gap-10 xl:gap-4 text-center">
       <SectionTitle title={"Register"}></SectionTitle> 
-      <span><FaSignInAlt className="text-2xl -mt-6"></FaSignInAlt ></span>
+      <span><FaSignInAlt className="text-2xl mt-2"></FaSignInAlt ></span>
       <div className="">
         <div className="hero-content flex-col-reverse lg:flex-row-reverse">
           <div className="text-center lg:text-left ">
@@ -176,7 +176,7 @@ const SignUp = () => {
 
               <div className="form-control mt-6 flex justify-between">
                 <input
-                  className="btn btn-primary text-white bg-textBlue hover:bg-gray-400 hover:text-black hover:border-transparent"
+                  className="btn text-white bg-textBlue hover:bg-gray-400 hover:text-black hover:border-transparent"
                   type="submit"
                   value="Sign up"
                 />

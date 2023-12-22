@@ -7,6 +7,8 @@ import { taskDetails } from "../api/task";
 import Home from "../pages/Home/Home";
 import UpdateTask from "../pages/UpdateTask/UpdateTask";
 import Details from "../pages/Details/Details";
+import AboutSection from "../pages/AboutSection/AboutSection";
+import FeaturesSection from "../pages/FeaturesSection/FeaturesSection";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +19,14 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/about",
+        element: <AboutSection></AboutSection>,
+      },
+      {
+        path: "/features",
+        element: <FeaturesSection></FeaturesSection>,
       },
       {
         path: "/updateTask/:id",

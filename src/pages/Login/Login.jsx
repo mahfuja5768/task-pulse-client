@@ -36,7 +36,7 @@ const Login = () => {
     <div className="max-w-contentContainer h-screen mx-auto py-10 mdl:py-10 flex flex-col justify-center items-center gap-4 lgl:gap-8 mdl:gap-10 xl:gap-4 text-center">
       <SectionTitle title={"Login Now"}></SectionTitle>
       <span>
-        <FaSignInAlt className="text-2xl -mt-6"></FaSignInAlt>
+        <FaSignInAlt className="text-2xl my-4"></FaSignInAlt>
       </span>
       <div className="md:px-24 flex-col-reverse lg:flex-row-reverse justify-center items-center">
         <div className="text-center  lg:text-left ">
@@ -83,7 +83,7 @@ const Login = () => {
 
             <div className="form-control mt-6">
               <input
-                className="btn btn-primary text-white bg-textBlue hover:bg-gray-400 hover:text-black hover:border-transparent"
+                className="btn text-white bg-textBlue hover:bg-gray-400 hover:text-black hover:border-transparent"
                 type="submit"
                 value="Login"
               />
