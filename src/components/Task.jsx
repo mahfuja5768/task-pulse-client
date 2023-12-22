@@ -6,10 +6,22 @@ import { removeTask, taskDetails } from "../api/task";
 import { useDrag } from "react-dnd";
 import { FaEye } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import Loading from "./Shared/Loading";
+import useAuth from "../hooks/useAuth";
 
 // eslint-disable-next-line react/prop-types
 const Task = ({ task, refetch }) => {
   const [detail, setDetail] = useState([]);
+
+  const { user, loading } = useAuth();
+  //   console.log(user?.email);
+  if (loading) {
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
+  }
 
   const { deadline, description, priority, taskAddedTime, title, status } =
     detail || {};
@@ -66,7 +78,7 @@ const Task = ({ task, refetch }) => {
           <Link onClick={() => handleDetail(task?._id)}>
             <button
               className="flex   justify-center items-center border-2 border-textBlue p-1"
-              onClick={() => document.getElementById("my_modal_3").showModal()}
+              onClick={() => document.getElementById("my_modal_4").showModal()}
             >
               <FaEye />
             </button>
@@ -87,25 +99,26 @@ const Task = ({ task, refetch }) => {
         </div>
       </div>
       {/* modal */}
-      <dialog id="my_modal_3" className="modal">
+      <dialog id="my_modal_4" className="modal">
         <div className="modal-box">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
               ✕
             </button>
           </form>
+          <h2 className="text-2xl font-bold text-center my-3 border-b-2 pb-4">Task Details</h2>
           <h3 className="font-bold text-lg text-black">Title: {title}</h3>
-          <p className="py-4">Description: {description}</p>
-          <p className="py-4">
+          <p className="py-3 text-lg font-bold">Description: {description}</p>
+          <p className="py-3 text-lg font-bold">
             Deadline: {new Date(deadline).toLocaleString()}
           </p>
-          <p className="py-4">
+          <p className="py-3 text-lg font-bold">
             Task Created in: {new Date(taskAddedTime).toLocaleString()}
           </p>
-          <p className="py-4">Task update: In {status} list</p>
-          <p className="py-4">
+          <p className="py-3 text-lg font-bold">Task update: In {status} list</p>
+          <p className="py-3 text-lg font-bold">
             Priority:
-            {priority}
+           <span className=""> {priority}</span>
           </p>
         </div>
       </dialog>

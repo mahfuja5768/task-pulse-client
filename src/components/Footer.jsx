@@ -19,7 +19,7 @@ const Footer = () => {
               <FaFacebookF className="text-xl "></FaFacebookF>
             </a>
             <a
-              href="https://www.dribbble.com/"
+              href="https://www.linkedin.com/"
               className="hover:-translate-y-2 duration-300"
               target="blank"
             >

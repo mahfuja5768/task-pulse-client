@@ -6,7 +6,7 @@ import axiosSecure from "../../api";
 
 const UpdateTask = () => {
   const task = useLoaderData();
-  console.log(task);
+  // console.log(task);
   const { _id, description, title, deadline, priority} =
     task[0] || {};
   //  console.log(task.title);
@@ -58,7 +58,7 @@ const UpdateTask = () => {
   };
 
   return (
-    <div>
+    <div className="my-32 container mx-auto">
       <SectionTitle title={"Update your task"}></SectionTitle>
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
         <div className="form-control">

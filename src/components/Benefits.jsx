@@ -1,8 +1,14 @@
 import SectionTitle from "./SectionTitle";
+import { motion } from "framer-motion";
 
 const Benefits = () => {
   return (
-    <div className="bg-[#f0d9d9] py-12">
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="bg-[#f0d9d9] py-12"
+    >
       <SectionTitle
         dark={"dark"}
         title={"Who Benefits from Our Task Management Platform?"}
@@ -58,9 +64,8 @@ const Benefits = () => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
-
 
 export default Benefits;
