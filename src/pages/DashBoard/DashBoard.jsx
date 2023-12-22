@@ -9,6 +9,7 @@ import Loading from "../../components/Shared/Loading";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import UserInfo from "../../components/UserInfo";
+import SectionTitle from "../../components/SectionTitle";
 
 
 const DashBoard = () => {
@@ -40,10 +41,11 @@ const DashBoard = () => {
 //   }
 
   return (
-    <div>
+    <div className="bg-[#ecd1d1] py-12 ">
+      <SectionTitle title={'Dashboard'}></SectionTitle>
       <UserInfo></UserInfo>
       <DndProvider backend={HTML5Backend}>
-        <div className="flex  px-6 flex-col items-center pt-3 gap-16">
+        <div className=" flex  px-6 flex-col items-center pt-3 gap-12">
           <CreateTask refetch={refetch} />
           <TaskList tasks={tasks} refetch={refetch} />
         </div>

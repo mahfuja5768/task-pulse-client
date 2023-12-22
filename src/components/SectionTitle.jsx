@@ -1,14 +1,16 @@
 
-  const SectionTitle= ({ title }) => {
+  const SectionTitle= ({ title , dark}) => {
   
     return (
-      <div className="text-center mb-6">
-        <div className="line-before inline-block h-0.5 w-6 bg-textBlue"></div>
-        <h2 className="font-titleFont inline-block text-2xl ml-2 font-semibold text-textBlue md:text-4xl">
-          {title}
-        </h2>
-        <div className="line-after inline-block h-0.5 w-6 bg-textBlue"></div>
-      </div>
+      <header
+        className={`${
+          !dark
+            ? "bg-[#dfb1b3]  text-black px-4 py-8"
+            : "bg-[#ecd1d1]  text-black px-4 py-8"
+        }`}
+      >
+        <h1 className="text-3xl font-semibold text-center">{title}</h1>
+      </header>
     );
   };
   

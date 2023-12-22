@@ -25,17 +25,17 @@ const TaskPosition = ({
   }));
 
   let text = "Todo";
-  let bg = "bg-red-700";
+  let bg = "bg-[#9A208C]";
   let tasksToMap = todos;
 
   if (status === "onGoing") {
     text = "On Going";
-    bg = "bg-yellow-700";
+    bg = "bg-[#E11299]";
     tasksToMap = onGoing;
   }
   if (status === "completed") {
     text = "Completed";
-    bg = "bg-green-700";
+    bg = "bg-[#1F4172]";
     tasksToMap = completed;
   }
 

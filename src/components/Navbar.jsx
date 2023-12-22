@@ -24,17 +24,23 @@ export const Navbar = () => {
   }
 
   return (
-    <div className="w-full shadow-xl h-20 lg:h-[12vh] sticky top-0 z-50 px-4">
+    <div className="w-full h-16 lg:h-[18vh] sticky top-0 z-50 px-4">
       <div className="max-w-container h-full mx-auto py-1 font-titleFont flex items-center justify-between">
-        <motion.div
-          initial={{ y: -10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.1 }}
-        >
-          <Link to={"/"}>
-            <img className="mdl:w-24 md:w-20 w-12" src={logo} alt="logo" />
-          </Link>
-        </motion.div>
+        <div>
+          <motion.div
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.1 }}
+          >
+            <Link to={"/"}>
+              <img
+                className="mdl:w-20 mdl:h-20  md:w-18  md:h-18 w-10"
+                src={logo}
+                alt="logo"
+              />
+            </Link>
+          </motion.div>
+        </div>
         <div className="hidden mdl:inline-flex items-center gap-7">
           <ul className="flex text-[15px] gap-7 ">
             <Link
@@ -62,41 +68,52 @@ export const Navbar = () => {
               </motion.li>
             </Link>
             <Link
-              to="/signUp"
+              to="/features"
               className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
             >
               <motion.li
                 initial={{ y: -10, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.1, delay: 0.3 }}
+                transition={{ duration: 0.1, delay: 0.2 }}
               >
-                Register
+                Features
               </motion.li>
             </Link>
-            {user ? (
-              <div className="flex  gap-3">
-                <img
-                  className="w-12 rounded-full h-12"
-                  src={user?.photoURL}
-                  alt=""
-                />
-                <Link to="/login">
-                  <button
-                    onClick={handleLogout}
-                    className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300"
-                  >
-                    Log out
-                  </button>
-                </Link>
-              </div>
-            ) : (
-              <Link to="/login">
-                <button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
-                  Login
-                </button>
+            {!user && (
+              <Link
+                to="/signUp"
+                className="flex items-center gap-1 font-semibold text-textBlue hover:text-textDark cursor-pointer duration-300 nav-link"
+              >
+                <motion.li
+                  initial={{ y: -10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.1, delay: 0.3 }}
+                >
+                  Register
+                </motion.li>
               </Link>
             )}
           </ul>
+        </div>
+        <div className="hidden mdl:inline-flex items-center ">
+          {user ? (
+            <div className="flex  gap-3">
+              <Link to="/">
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300"
+                >
+                  Log out
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
         {/* icon */}
         <div
@@ -113,17 +130,17 @@ export const Navbar = () => {
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.1 }}
-              className="w-[80%] h-full bg-[#112240]  overflow-y-scroll scrollbarHide flex flex-col items-center px-4 py-10 relative"
+              className="w-[80%] h-full bg-[#d09b9d]  overflow-y-scroll scrollbarHide flex flex-col items-center px-4 py-10 relative"
             >
               <FaX
                 onClick={() => setShowMenu(false)}
-                className="text-3xl text-white  hover:text-red-700 absolute cursor-pointer right-4 top-4"
+                className="text-3xl  hover:text-red-800 absolute cursor-pointer right-4 top-4"
               ></FaX>
               <div className="flex flex-col items-center gap-7">
                 <ul className="flex flex-col text-base gap-7">
                   <Link
                     to="/"
-                    className="flex items-center gap-1 font-semibold text-white hover:text-textDark cursor-pointer duration-300 nav-link"
+                    className="flex items-center gap-1 font-semibold  hover:text-gray-700 cursor-pointer duration-300 nav-link"
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -135,7 +152,7 @@ export const Navbar = () => {
                   </Link>
                   <Link
                     to="/about"
-                    className="flex items-center gap-1 font-semibold text-white hover:text-textDark cursor-pointer duration-300 nav-link"
+                    className="flex items-center gap-1 font-semibold hover:text-gray-700 cursor-pointer duration-300 nav-link"
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
@@ -145,18 +162,53 @@ export const Navbar = () => {
                       About
                     </motion.li>
                   </Link>
+
                   <Link
-                    href="/signUp"
-                    className="flex items-center gap-1 font-semibold text-white hover:text-textDark cursor-pointer duration-300 nav-link"
+                    to="/about"
+                    className="flex items-center gap-1 font-semibold hover:text-gray-700 cursor-pointer duration-300 nav-link"
                   >
                     <motion.li
                       initial={{ x: 20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.2, delay: 0.1, ease: "easeIn" }}
                     >
-                      Register
+                      <Link
+                        to="/features"
+                        className="flex items-center gap-1 font-semibold hover:text-gray-700 cursor-pointer duration-300 nav-link"
+                      >
+                        <motion.li
+                          initial={{ x: 20, opacity: 0 }}
+                          animate={{ x: 0, opacity: 1 }}
+                          transition={{
+                            duration: 0.2,
+                            delay: 0.1,
+                            ease: "easeIn",
+                          }}
+                        >
+                          Features
+                        </motion.li>
+                      </Link>
                     </motion.li>
                   </Link>
+
+                  {!user && (
+                    <Link
+                      href="/signUp"
+                      className="flex items-center gap-1 font-semibold hover:text-gray-700 cursor-pointer duration-300 nav-link"
+                    >
+                      <motion.li
+                        initial={{ x: 20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{
+                          duration: 0.2,
+                          delay: 0.1,
+                          ease: "easeIn",
+                        }}
+                      >
+                        Register
+                      </motion.li>
+                    </Link>
+                  )}
 
                   {user ? (
                     <div className="flex flex-col gap-3">
@@ -165,10 +217,10 @@ export const Navbar = () => {
                         src={user?.photoURL}
                         alt=""
                       />
-                      <Link to="/login">
+                      <Link to="/">
                         <button
                           onClick={handleLogout}
-                          className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300"
+                          className="px-4 py-2 rounded-md font-semibold hover:text-gray-700 text-[15px] hover:border-4  border-4 border-transparent  hover:bg-transparent hover:border-textBlue text-white bg-textBlue"
                         >
                           Log out
                         </button>
@@ -176,7 +228,7 @@ export const Navbar = () => {
                     </div>
                   ) : (
                     <Link to="/login">
-                      <button className="px-4 py-2 rounded-md font-semibold text-textBlue text-[15px] border-4 border-textBlue bg-primary hover:bg-hoverColor duration-300">
+                      <button className="px-4 py-2 rounded-md font-semibold  hover:text-gray-700 text-[15px] hover:border-4  border-4 border-transparent  hover:bg-transparent hover:border-textBlue text-white bg-textBlu">
                         Login
                       </button>
                     </Link>

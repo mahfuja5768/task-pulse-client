@@ -55,7 +55,7 @@ const Task = ({ task, refetch }) => {
     <>
       <div
         ref={drag}
-        className={`relative p-4 mt-8 shadow-md bg-white rounded-md cursor-grab flex flex-col justify-between ${
+        className={`relative p-4 bg-white mt-8 shadow-md border-4 border-[#5F0F40] rounded-md cursor-grab flex flex-col justify-between ${
           isDragging ? "opacity-25" : "opacity-100"
         }`}
       >
