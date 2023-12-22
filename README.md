@@ -1,8 +1,22 @@
-# React + Vite
+<div align="center">
+  <h1>Website Name : Task-Pulse</h1> 
+  <h2>Live link : https://task-pulse-12.netlify.app/</h2>
+  <h2>Server side code link : https://github.com/mahfuja5768/task-pulse-server</h2>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies:
+This project is made by React, Nodejs, Exress.js, Tailwind, Here for authentication I used firebase, jwt.
 
-Currently, two official plugins are available:
+## # The features and functionalities  of my website are giving below :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ~  Organize your tasks seamlessly by dragging and dropping them into different categories, such as Ongoing or Completed. Enjoy a flexible and intuitive workflow.
+
+### ~  Make updates to your tasks effortlessly. Whether it's changing due dates, modifying details, or adjusting priorities, editing tasks is a breeze.
+
+
+
+
+
+
+
+
