@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import axiosSecure from ".";
+import useAxiosPublic from './../hooks/useAxiosPublic';
 
 export const saveUser = async (user) => {
-  console.log(user);
+  // console.log(user);
+  const axiosPublic = useAxiosPublic();
   const date = new Date()
   console.log(user?.email);
   const currentUser = {
@@ -11,7 +13,7 @@ export const saveUser = async (user) => {
     email: user?.email,
     date
   };
-  const { data } = await axiosSecure.post("/users", currentUser);
+  const { data } = await axiosPublic.post("/users", currentUser);
   console.log(data);
   return data;
 };

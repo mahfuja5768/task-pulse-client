@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 const SocialLogin = () => {
   const { googleLogin } = useAuth();
   const navigate = useNavigate();
+
   const handleGoogleSignIn = async () => {
     try {
       const result = await googleLogin();

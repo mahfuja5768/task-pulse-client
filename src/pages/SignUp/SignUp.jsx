@@ -35,7 +35,7 @@ const SignUp = () => {
       await updateUserProfile(name, imageData?.data?.display_url);
 
       // console.log(result.user);
-      const saveUserInfo = await saveUser(result?.user);
+      const saveUserInfo = await saveUser(result.user);
       console.log(saveUserInfo);
 
       reset();
